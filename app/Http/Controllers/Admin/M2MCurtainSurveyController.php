@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\CustomSurvey;
 use App\CustomSurveyQuestions;
 use App\Http\Controllers\Controller;
+use App\M2MCurtain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,12 +18,8 @@ class M2MCurtainSurveyController extends Controller
      */
     public function index()
     {
-        $custom_survey_questions = CustomSurveyQuestions::where('status','1')->get()->sortBy('rank');
-        $custom_survey_entries = CustomSurvey::all()->toArray();
-
-
-
-        return view('admin.m2mcurtain.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
+        $entries = M2MCurtain::all();
+        return view('admin.m2mcurtain.index', compact('entries'));
     }
 
     /**
@@ -32,7 +29,7 @@ class M2MCurtainSurveyController extends Controller
      */
     public function create()
     {
-        return view('admin.customsurvey.form.marketresearch');
+        return view('admin.m2mcurtain.form.marketresearch');
     }
 
     /**
@@ -50,7 +47,7 @@ class M2MCurtainSurveyController extends Controller
         $survey = CustomSurvey::create($data);
 
         $message = 'Survey Entry ID: ' . $survey->id . ' created successfully.';
-        return redirect()->route('admin.customsurvey.create')->with('message', $message);
+        return redirect()->route('admin.m2mcurtain.create')->with('message', $message);
     }
 
     // /**
@@ -102,6 +99,6 @@ class M2MCurtainSurveyController extends Controller
         $custom_survey_questions = CustomSurveyQuestions::all()->sortBy('rank');
         $custom_survey_entries = CustomSurvey::all()->toArray();
 
-        return view('admin.customsurvey.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
+        return view('admin.m2mcurtain.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
     }
 }
