@@ -61,7 +61,7 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']
     Route::get('file-export', 'ImportExportController@fileExport')->name('import-export.fileExport');
     Route::resource('import-export', 'ImportExportController');
 
-    // Media 
+    // Media
     Route::get('/media-upload-view', 'MediaController@media_upload_view')->name('media-upload-view');
     Route::get('/media-upload-drag-drop-view', 'MediaController@media_upload_drag_drop_view')->name('media-upload-drag-drop-view');
 
@@ -96,6 +96,13 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']
     // Custom Survey
     Route::resource('customsurvey', 'CustomSurveyController');
     Route::get('customsurvey/entries', 'CustomSurveyController@show_custom_survey_entries')->name("customsurvey.entries");
+    // AgentSurvey
+    Route::resource('agetsurvey', 'M2MCurtainSurveyController');
+    Route::get('agentsurvey/entries', 'M2MCurtainSurveyController@show_custom_survey_entries')->name("customsurvey.entries");
+
+   //Agent Survey
+    Route::resource('agentsurvey', 'AgentSurveyController');
+    Route::get('agenturvey/entries', 'AgentSurveyController@show_custom_survey_entries')->name("customsurvey.entries");
 
      // M2M Survey
      Route::resource('m2mcurtain', 'M2MCurtainSurveyController');
@@ -176,5 +183,5 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']
 
     Route::get('/fj-quizz-attempt-selector', 'QuizzController@quizz_attempt_weeks')->name('fj-quizz-attempt-selector');
     Route::get('/fj-quizz-release-answers', 'QuizzController@quizz_release_answers')->name('fj-quizz-release-answers');
-    
+
 });
