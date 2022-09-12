@@ -20,7 +20,9 @@ class M2MCurtainSurveyController extends Controller
         $custom_survey_questions = CustomSurveyQuestions::where('status','1')->get()->sortBy('rank');
         $custom_survey_entries = CustomSurvey::all()->toArray();
 
-        return view('admin.customsurvey.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
+
+
+        return view('admin.m2mcurtain.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
     }
 
     /**
