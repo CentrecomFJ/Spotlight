@@ -40,14 +40,14 @@ class M2MCurtainSurveyController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['user_id'] =  Auth::user()->id;
-        $data['contacted'] = $data['contacted'] ?? 'No';
-        
-        $survey = CustomSurvey::create($data);
+        // $data = $request->all();
+        // $data['user_id'] =  Auth::user()->id;
+        // $data['contacted'] = $data['contacted'] ?? 'No';
 
-        $message = 'Survey Entry ID: ' . $survey->id . ' created successfully.';
-        return redirect()->route('admin.m2mcurtain.create')->with('message', $message);
+        // $survey = CustomSurvey::create($data);
+
+        // $message = 'Survey Entry ID: ' . $survey->id . ' created successfully.';
+        // return redirect()->route('admin.m2mcurtain.create')->with('message', $message);
     }
 
     // /**
@@ -67,10 +67,10 @@ class M2MCurtainSurveyController extends Controller
     //  * @param  int  $id
     //  * @return \Illuminate\Http\Response
     //  */
-    // public function edit($id)
-    // {
-    //     //
-    // }
+    public function edit(M2MCurtain $m2mcurtain)
+    {
+        return view('admin.m2mcurtain.form.marketresearch', compact('m2mcurtain'));
+    }
 
     // /**
     //  * Update the specified resource in storage.
@@ -79,10 +79,18 @@ class M2MCurtainSurveyController extends Controller
     //  * @param  int  $id
     //  * @return \Illuminate\Http\Response
     //  */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
+    public function update(Request $request, M2MCurtain $m2mcurtain)
+    {
+        $user_id = Auth::user()->id ?? null;
+        
+        $data = $request->all();
+        $data['user_id'] =  $user_id;
+
+        $m2mcurtain->update($data);
+
+        return redirect()->route('admin.m2mcurtain.index')->with(['message' => 'Entry updated successfully']);
+    }
+
 
     // /**
     //  * Remove the specified resource from storage.
@@ -95,10 +103,11 @@ class M2MCurtainSurveyController extends Controller
     //     //
     // }
 
-    public function show_custom_survey_entries(){
-        $custom_survey_questions = CustomSurveyQuestions::all()->sortBy('rank');
-        $custom_survey_entries = CustomSurvey::all()->toArray();
+    public function show_custom_survey_entries()
+    {
+        // $custom_survey_questions = CustomSurveyQuestions::all()->sortBy('rank');
+        // $custom_survey_entries = CustomSurvey::all()->toArray();
 
-        return view('admin.m2mcurtain.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
+        // return view('admin.m2mcurtain.report.surveyentries', compact('custom_survey_questions', 'custom_survey_entries'));
     }
 }

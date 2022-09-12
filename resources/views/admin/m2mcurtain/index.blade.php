@@ -20,38 +20,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    @can('call_entries_create')
-                        {{-- <div style="margin-bottom: 10px;" class="row">
-                    <div class="col-lg-12">
-                        <a class="btn btn-success" href="{{ route('admin.covidtracker.create') }}">
-                            Create Helpdesk Entry
-                        </a>
-                    </div>
-                </div> --}}
-                    @endcan
+
                     <div class="card">
                         <div class="card-body">
-                            {{-- <div class="row">
-                            <div class="col-4 offset-4">
-                                <form>
-                                    <input type="hidden" name="startdate" id="startdate">
-                                    <input type="hidden" name="enddate" id="enddate">
-                                    <div class="form-group">
-                                        <label>Date range:</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">
-                                                    <i class="far fa-calendar-alt"></i>
-                                                </span>
-                                            </div>
-                                            <input type="text" class="form-control float-right" id="listing-dates">
-                                        </div>
-                                        <!-- /.input group -->
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <hr> --}}
 
                             <div class="table-responsive">
                                 <table id="datatable-CovidEntries"
@@ -141,32 +112,6 @@
                     [0, "desc"]
                 ]
             });
-
-            //Date range picker
-            // $('#listing-dates').daterangepicker();
-            // //handler
-            // $('#listing-dates').on('apply.daterangepicker', function(ev, picker) {
-            //     let startdate = picker.startDate.format('YYYY-MM-DD');
-            //     let enddate = picker.endDate.format('YYYY-MM-DD');
-
-            //     $("#startdate").val(startdate);
-            //     $("#enddate").val(enddate);
-
-            //     // $("#date-range").submit();
-            //     dataTable.draw();
-            // });
-
-            /*
-            $("#datatable-FaqCategory").DataTable({
-                "responsive": true
-                , "lengthChange": false
-                , "autoWidth": false
-                , "buttons": ["excel"]
-                , "order": [
-                    [0, "desc"]
-                ]
-            }).buttons().container().appendTo('#datatable-FaqCategory_wrapper .col-md-6:eq(0)'); 
-            */
         });
     </script>
 @endsection

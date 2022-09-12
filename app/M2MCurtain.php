@@ -26,6 +26,7 @@ class M2MCurtain extends Model
         'q2',
         'q3',
         'q4',
+        'disposition',
         'user_id',
     ];
 
