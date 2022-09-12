@@ -104,6 +104,10 @@ Route::group(['as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']
     Route::resource('agentsurvey', 'AgentSurveyController');
     Route::get('agenturvey/entries', 'AgentSurveyController@show_custom_survey_entries')->name("customsurvey.entries");
 
+     // M2M Survey
+     Route::resource('m2mcurtain', 'M2MCurtainSurveyController');
+     Route::get('m2mcurtain/entries', 'M2MCurtainSurveyController@show_custom_survey_entries')->name("m2mcurtain.entries");
+
     // Call Tracker
     Route::resource('calltracker', 'CallTrackerController');
     //Reports
